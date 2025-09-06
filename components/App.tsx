@@ -1,14 +1,14 @@
 
 import React, { useState, useCallback } from 'react';
-import { Header } from './components/Header';
+import { Header } from './Header';
 import { ImageUploader } from './components/ImageUploader';
-import { PromptInput } from './components/PromptInput';
-import { Button } from './components/Button';
+import { PromptInput } from './PromptInput';
+import { Button } from './Button';
 import { ResultDisplay } from './components/ResultDisplay';
 import { Spinner } from './components/Spinner';
-import { editImageWithNanoBanana } from './services/geminiService';
-import type { GeneratedContent, UploadedImage } from './types';
-import { Icon } from './components/Icon';
+import { editImageWithNanoBanana } from '../services/geminiService';
+import type { GeneratedContent, UploadedImage } from '../types';
+import { Icon } from './Icon';
 
 const App: React.FC = () => {
   const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(null);
