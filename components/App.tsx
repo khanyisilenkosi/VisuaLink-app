@@ -6,7 +6,7 @@ import { PromptInput } from './PromptInput';
 import { Button } from './Button';
 import { ResultDisplay } from './components/ResultDisplay';
 import { Spinner } from './components/Spinner';
-import { editImageWithNanoBanana } from '../services/geminiService';
+import { editImageWithNanoBanana } from './services/geminiService';
 import type { GeneratedContent, UploadedImage } from '../types';
 import { Icon } from './Icon';
 
