@@ -1,11 +1,11 @@
 
 import React, { useState, useCallback } from 'react';
 import { Header } from './Header';
-import { ImageUploader } from './components/ImageUploader';
+import { ImageUploader } from './ImageUploader';
 import { PromptInput } from './PromptInput';
 import { Button } from './Button';
-import { ResultDisplay } from './components/ResultDisplay';
-import { Spinner } from './components/Spinner';
+import { ResultDisplay } from './ResultDisplay';
+import { Spinner } from './Spinner';
 import { editImageWithNanoBanana } from './services/geminiService';
 import type { GeneratedContent, UploadedImage } from '../types';
 import { Icon } from './Icon';
