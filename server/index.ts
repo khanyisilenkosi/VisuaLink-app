@@ -36,7 +36,12 @@ app.post("/generate", async (req, res) => {
     let imageUrl: string | null = null;
     let text: string | null = null;
 
-    if (response.candidates && response.candidates.length > 0) {
+    if (
+      response.candidates &&
+      response.candidates.length > 0 &&
+      response.candidates[0].content &&
+      Array.isArray(response.candidates[0].content.parts)
+    ) {
       for (const part of response.candidates[0].content.parts) {
         if (part.inlineData) {
           imageUrl = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
