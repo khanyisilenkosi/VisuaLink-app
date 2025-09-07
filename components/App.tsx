@@ -31,26 +31,40 @@ const App: React.FC = () => {
     setError(null);
   };
 
-  const handleSubmit = useCallback(async () => {
-    if (!uploadedImage || !prompt) {
-      setError('Please upload an image and provide a prompt.');
-      return;
-    }
+const handleSubmit = useCallback(async () => {
+  if (!uploadedImage || !prompt) {
+    setError("Please upload an image and provide a prompt.");
+    return;
+  }
 
-    setIsLoading(true);
-    setError(null);
-    setGeneratedContent(null);
+  setIsLoading(true);
+  setError(null);
+  setGeneratedContent(null);
 
-    try {
-      const result = await editImageWithNanoBanana(uploadedImage.base64, uploadedImage.mimeType, prompt);
-      setGeneratedContent(result);
-    } catch (e: unknown) {
-      const errorMessage = e instanceof Error ? e.message : 'An unknown error occurred.';
-      setError(`Generation failed: ${errorMessage}`);
-    } finally {
-      setIsLoading(false);
+  try {
+    const response = await fetch("http://localhost:4000/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        base64: uploadedImage.base64,
+        mimeType: uploadedImage.mimeType,
+        prompt
+      })
+    });
+
+    const data = await response.json();
+    if (data.error) {
+      setError(data.error);
+    } else {
+      setGeneratedContent(data);
     }
-  }, [uploadedImage, prompt]);
+  } catch (err) {
+    setError("Failed to communicate with server.");
+  } finally {
+    setIsLoading(false);
+  }
+}, [uploadedImage, prompt]);
+
   
   const handleClear = () => {
     setUploadedImage(null);
