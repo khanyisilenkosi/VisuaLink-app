@@ -1,6 +1,6 @@
 
 import { GoogleGenAI, Modality } from "@google/genai";
-import type { GeneratedContent } from '../../types';
+import type { GeneratedContent } from '../types';
 
 const apiKey = import.meta.env.VITE_API_KEY;
 

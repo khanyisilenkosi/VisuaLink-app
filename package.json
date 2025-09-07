@@ -2,12 +2,12 @@
   "name": "visualink-app",
   "version": "0.0.1",
   "private": true,
-"scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
-  "server": "nodemon server/index.ts"
-},
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "ts-node server/index.ts"
+  },
   "dependencies": {
     "@google/genai": "^1.17.0",
     "body-parser": "^2.2.0",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "@types/node": "^24.3.1",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "nodemon": "^3.1.10",
